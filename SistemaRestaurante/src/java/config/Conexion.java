@@ -4,33 +4,31 @@
  * and open the template in the editor.
  */
 package config;
-
-import com.mysql.jdbc.Connection;
-import java.sql.DriverManager;
-
+import java.sql.*;
 /**
  *
- * @author JCERNA10
+ * @author estua
  */
 public class Conexion {
-
-    private static String url = "jdbc:mysql://localhost/restaurante2";
-    private static String usuario = "root";
-    private static String contraseña = "";
-
-    public static Connection conexion() {
-        Connection conexion = null;
+    Connection con;
+    String url = "jdbc:mysql://localhost:3306/restaurante2";
+    String user = "root";
+    String pass = "programacion4";
+    public Connection Conexion(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conexion = (Connection) DriverManager.getConnection(url, usuario, contraseña);
-            System.out.println("Conexion establecida a la base de datos");
+            con = DriverManager.getConnection(url, user, pass);
         } catch (Exception e) {
-            System.out.println("Error: " + e);
+            //TODO: handle exception
+        }        
+        return con;
+    }
 
-        }
-        return conexion;
+    public Connection conexion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
+    
     
     
     
